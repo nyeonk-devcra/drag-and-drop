@@ -1,3 +1,5 @@
+import DraggableComponent from "./Component";
+
 export default function Home() {
-  return <div>setting</div>;
+  return <DraggableComponent />;
 }
