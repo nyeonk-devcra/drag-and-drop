@@ -40,22 +40,22 @@ export default function DraggableComponent() {
     event.preventDefault();
   };
 
+  const updateDropzoneIndex = (row: number, index: number, value: boolean) => {
+    setDropzoneIndex((prev) => {
+      const updatedDropzoneState = [...prev];
+      updatedDropzoneState[row][index] = value;
+      return updatedDropzoneState;
+    });
+  };
+
   const handleDragEnter = (row: number, index: number) => {
     if (currentRow === row) {
-      setDropzoneIndex((prev) => {
-        const updatedDropzoneState = [...prev];
-        updatedDropzoneState[row][index] = true;
-        return updatedDropzoneState;
-      });
+      updateDropzoneIndex(row, index, true);
     }
   };
 
   const handleDragLeave = (row: number, index: number) => {
-    setDropzoneIndex((prev) => {
-      const updatedDropzoneState = [...prev];
-      updatedDropzoneState[row][index] = false;
-      return updatedDropzoneState;
-    });
+    updateDropzoneIndex(row, index, false);
   };
 
   const handleDrop = (
