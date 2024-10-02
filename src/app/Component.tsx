@@ -22,7 +22,7 @@ const DATA = [
 
 export default function DraggableComponent() {
   const [data, setData] = useState(DATA);
-  const [dropzoneIndex, setDropzoneIndex] = useState<boolean[][]>([[], []]);
+  // const [dropzoneIndex, setDropzoneIndex] = useState<boolean[][]>([[], []]);
   const [draggedId, setDraggedId] = useState<number | null>(null);
   const [currentRow, setCurrentRow] = useState<number | null>(null);
 
@@ -32,7 +32,7 @@ export default function DraggableComponent() {
   };
 
   const handleDragEnd = () => {
-    setDropzoneIndex([[], []]);
+    // setDropzoneIndex([[], []]);
     setDraggedId(null);
   };
 
@@ -40,23 +40,23 @@ export default function DraggableComponent() {
     event.preventDefault();
   };
 
-  const updateDropzoneIndex = (row: number, index: number, value: boolean) => {
-    setDropzoneIndex((prev) => {
-      const updatedDropzoneState = [...prev];
-      updatedDropzoneState[row][index] = value;
-      return updatedDropzoneState;
-    });
-  };
+  // const updateDropzoneIndex = (row: number, index: number, value: boolean) => {
+  //   setDropzoneIndex((prev) => {
+  //     const updatedDropzoneState = [...prev];
+  //     updatedDropzoneState[row][index] = value;
+  //     return updatedDropzoneState;
+  //   });
+  // };
 
-  const handleDragEnter = (row: number, index: number) => {
-    if (currentRow === row) {
-      updateDropzoneIndex(row, index, true);
-    }
-  };
+  // const handleDragEnter = (row: number, index: number) => {
+  //   if (currentRow === row) {
+  //     updateDropzoneIndex(row, index, true);
+  //   }
+  // };
 
-  const handleDragLeave = (row: number, index: number) => {
-    updateDropzoneIndex(row, index, false);
-  };
+  // const handleDragLeave = (row: number, index: number) => {
+  //   updateDropzoneIndex(row, index, false);
+  // };
 
   const handleDrop = (
     event: React.DragEvent<HTMLElement>,
@@ -88,7 +88,7 @@ export default function DraggableComponent() {
       );
     }
 
-    setDropzoneIndex([[], []]);
+    // setDropzoneIndex([[], []]);
     setDraggedId(null);
   };
 
@@ -99,12 +99,10 @@ export default function DraggableComponent() {
           <div key={rowIdx + colIdx} className="h-40 flex gap-2 py-2">
             <div
               onDragOver={handleDragOver}
-              onDragEnter={() => handleDragEnter(rowIdx, colIdx)}
-              onDragLeave={() => handleDragLeave(rowIdx, colIdx)}
+              // onDragEnter={() => handleDragEnter(rowIdx, colIdx)}
+              // onDragLeave={() => handleDragLeave(rowIdx, colIdx)}
               onDrop={(e) => handleDrop(e, rowIdx, colIdx)}
-              className={`w-full h-full bg-gray-300 border-x flex items-center justify-center ${
-                dropzoneIndex[rowIdx][colIdx] ? "bg-gray-200" : ""
-              }`}
+              className={`w-full h-full bg-gray-300 border-x flex items-center justify-center`}
             >
               {el.list
                 .filter((item) => item.seq === colIdx + 1)
