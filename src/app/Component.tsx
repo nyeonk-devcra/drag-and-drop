@@ -114,7 +114,7 @@ export default function DraggableComponent() {
                     draggable
                     onDragStart={() => handleDragStart(e.id, rowIdx)}
                     onDragEnd={handleDragEnd}
-                    className="w-full h-full z-10 bg-pink-300 cursor-pointer flex justify-center items-center"
+                    className="w-full h-full z-10 bg-pink-300 dark:text-black dark:bg-blue-300 cursor-pointer flex justify-center items-center"
                   >
                     {e.name}
                   </div>
